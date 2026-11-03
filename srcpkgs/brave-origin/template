@@ -1,0 +1,28 @@
+# Template file for 'brave-origin'
+pkgname=brave-origin
+version=1.98.62
+revision=1
+archs="x86_64"
+#build_wrksrc=
+#build_style=gnu-configure
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="rpmextract"
+makedepends="alsa-lib gtk+3 nss"
+#depends=""
+short_desc="Brave Browser Origin"
+maintainer="edenian <faaragona4@gmail.com>"
+license="MPL-2.0, BSD-3-Clause, custom:chromium"
+homepage="https://www.brave.com/"
+changelog="https://www.brave.com/latest/"
+distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-origin-${version}-1.x86_64.rpm"
+checksum=5b0960c2989ec181b976947103d45d2decf2ee4e62b05ad06fe7dd8a9a762afc
+
+do_install() {
+    rm -f etc/cron.daily/brave-origin
+    vcopy "*" /
+    vmkdir usr/share/pixmaps
+}
